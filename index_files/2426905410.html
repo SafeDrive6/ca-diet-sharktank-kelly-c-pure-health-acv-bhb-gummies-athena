@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://bypass.trackrule.com/globalSession/tracking/2426905410?phase=B -->
+<html lang="en"><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Global</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <input id="bcid" type="hidden" value="2426905410">
+    <script>
+        const bcid = document.getElementById('bcid').value
+        const sgIdKey = 'gsId'
+        let sgId = localStorage.getItem(sgIdKey)
+        if(!sgId) {
+            sgId = bcid
+            localStorage.setItem(sgIdKey, bcid)
+        }
+
+        fetch(`/globalSession/id/${bcid}/${sgId}`)
+    </script>
+
+    <!-- Note that we use iife.min.js -->
+    <script src="./iife.min.js.download"></script>
+    <script>
+        // Initialize the agent at application startup.
+        var fpPromise = FingerprintJS.load()
+
+        // Analyze the visitor when necessary.
+        fpPromise
+            .then(fp => fp.get())
+            .then(result => fetch(`/globalSession/id/${bcid}/${sgId}/${result.visitorId}`))
+    </script>
+
+
+</body></html>
